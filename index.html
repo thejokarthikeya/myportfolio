@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thejo Karthikeya | AI Developer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background-color: #fefefe;
+      color: #222;
+    }
+
+    header {
+      background: #111;
+      color: white;
+      padding: 20px 0;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 960px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .nav-left img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #030303;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-left img:hover {
+      transform: scale(1.1);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 15px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: transform 0.25s ease, color 0.25s ease;
+    }
+
+    nav a:hover {
+      transform: scale(1.15);
+      color: #66ccff;
+    }
+
+    section {
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    #hero {
+      text-align: center;
+    }
+
+    #hero h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .hero-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #00ffff;
+      box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff88;
+      margin-bottom: 20px;
+      transition: transform 0.4s ease;
+      cursor: pointer;
+    }
+
+    .hero-photo:hover {
+      transform: scale(1.1);
+    }
+
+    .reach-out-btn {
+      padding: 12px 24px;
+      border-radius: 30px;
+      background: #00ffff;
+      color: #111;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 15px;
+      transition: transform 0.3s ease;
+      box-shadow: 0 0 2px #00ffff, 0 0 5px #00ffff;
+    }
+
+    .reach-out-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 80px #00ffffaa;
+    }
+
+    .popup-img-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .popup-img-container.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .popup-img-container img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .popup-img-container.show img {
+      transform: scale(1.05);
+    }
+
+    .project-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .project-card {
+      background: #f3f3f3;
+      padding: 15px;
+      border-radius: 20px;
+      width: 250px;
+      height: 250px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: scale(1.05);
+    }
+
+    .skill-bar {
+      background: #ddd;
+      border-radius: 20px;
+      margin-bottom: 15px;
+      overflow: hidden;
+      flex: 1;
+    }
+
+    .skill-level {
+      height: 24px;
+      color: white;
+      text-align: center;
+      background: #0077cc;
+      line-height: 24px;
+    }
+
+    .education {
+      margin-top: 40px;
+    }
+
+    .edu-card {
+      background: #e6f0ff;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-left: 6px solid #3366cc;
+      border-radius: 10px;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .edu-card:hover {
+      transform: scale(1.05);
+    }
+
+    .skill-icon {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .skill-icon img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .contact-icons img {
+      width: 28px;
+      height: 28px;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    .contact-icons a {
+      color: #0077cc;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    footer {
+      background: #111;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    footer p {
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 14px;
+      margin: 5px 0;
+      text-transform: lowercase;
+    }
+
+    footer p:first-child::first-letter {
+      text-transform: uppercase;
+    }
+
+    footer p:last-child {
+      margin-bottom: 0;
+    }
+
+    .resume-btn {
+      display: inline-block;
+      padding: 12px 28px;
+      background-color: #0077cc;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .resume-btn:hover {
+      background-color: #005fa3;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="nav-left">
+        <img src="tk.jpg" alt="TK Logo" id="profile-pic" />
+
+        <h1>Thejo Karthikeya</h1>
+      </div>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="hero">
+    <img src="mine.jpg" alt="Thejo Karthikeya" class="hero-photo" id="hero-image" />
+    <h1>Ciao, I'm Thejo Karthikeya</h1>
+    <p>AI Developer | Content Creator | Creative Technologist</p>
+    <a href="#message-form" class="reach-out-btn">REACH OUT</a>
+  </section>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Enthusiastic AI Developer with a passion for Artificial Intelligence and continuous learning. Experienced in HuggingFace, by using the FLUX and Renderforest models in Generative AI. Currently deepening my Python skills to build a strong AI foundation and highly interested in developing and fine-tuning my own AI models.</p>
+  </section>
+
+  <section id="education" class="education">
+    <h2>Education</h2>
+    <div class="edu-card">
+      <h4>B.Tech (Computer Science & Engineering) - (2022–Current)</h4>
+      <p>Narayana Engineering College, Gudur</p>
+      <p><strong>CGPA: 8.5</strong></p>
+    </div>
+    <div class="edu-card">
+      <h4>Intermediate (MPC) - (2020-2022)</h4>
+      <p>Narayana Junior College, Gudur</p>
+      <p><strong>Score: 650 / 1000</strong></p>
+    </div>
+    <div class="edu-card">
+      <h4>SSC - (2020)</h4>
+      <p>Prospero English Medium School, Gudur</p>
+      <p><strong>Score: 9.8 / 10 GPA</strong></p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skill-icon">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
+      <div class="skill-bar"><div class="skill-level" style="width: 85%;">Python – 85%</div></div>
+    </div>
+    <div class="skill-icon">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg" alt="HTML" />
+      <div class="skill-bar"><div class="skill-level" style="width: 80%;">HTML/CSS – 80%</div></div>
+    </div>
+    <div class="skill-icon">
+      <img src="https://img.icons8.com/ios/50/000000/artificial-intelligence.png" alt="Prompting" />
+      <div class="skill-bar"><div class="skill-level" style="width: 90%;">Prompting – 90%</div></div>
+    </div>
+    <div class="skill-icon">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
+      <div class="skill-bar"><div class="skill-level" style="width: 75%;">Git/Github – 75%</div></div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project-list">
+      <div class="project-card">
+        <h3><a href="https://thejokarthikeya.github.io/krishnawebworld/" target="_blank" style="color: #0077cc; text-decoration: none;">Krishna's Web World</a></h3>
+        <p>A creative, interactive webpage themed around Lord Krishna, designed using HTML, CSS & JavaScript.</p>
+      </div>
+      <div class="project-card">
+        <h3><a href="https://thejokarthikeya.github.io/PRODIGY_AI_01/" target="_blank" style="color: #0077cc; text-decoration: none;">Text-to-Image Model</a></h3>
+        <p>Built a text-to-image AI model as part of my internship using Generative AI techniques. Source code available on GitHub.</p>
+      </div>
+      <div class="project-card">
+        <h3>My AI Agentia</h3>
+        <p>[Upcoming AI Agent Project Placeholder]</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="resume" style="text-align: center;">
+    <h2>My Resume</h2>
+    <p>You can view or download my official resume below :</p>
+    <div style="margin-top: 20px;">
+    <a href="Thejo Karthikeya Resume (2).pdf" target="_blank" class="resume-btn">View Resume</a>
+
+    </div>
+  </section>
+
+  <section id="message-form">
+    <h2 style="text-align: center;">Send Me a Message</h2>
+    <form action="https://formspree.io/f/mqabvozn" method="POST" style="max-width: 600px; margin: 30px auto; display: flex; flex-direction: column; gap: 15px;">
+      <input type="text" name="name" placeholder="Your Name" required style="padding: 12px; border-radius: 8px; border: 1px solid #ccc; font-family: 'Poppins', sans-serif;" />
+      <input type="email" name="email" placeholder="Your Email" required style="padding: 12px; border-radius: 8px; border: 1px solid #ccc; font-family: 'Poppins', sans-serif;" />
+      <textarea name="message" placeholder="Your Message" rows="5" required style="padding: 12px; border-radius: 8px; border: 1px solid #ccc; font-family: 'Poppins', sans-serif;"></textarea>
+      <button type="submit" style="padding: 12px; border: none; border-radius: 30px; background: #00ffff; color: #111; font-weight: bold; cursor: pointer; transition: transform 0.3s ease; box-shadow: 0 0 5px #00ffff;">Send Message</button>
+    </form>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p class="contact-icons">
+      <img src="https://img.icons8.com/ios-filled/50/000000/gmail.png" alt="Email" />
+      <a href="mailto:thejokarthikeyawork@gmail.com">thejokarthikeyawork@gmail.com</a>
+    </p>
+    <p class="contact-icons">
+      <img src="https://img.icons8.com/ios-filled/50/000000/instagram-new.png" alt="Instagram" />
+      <a href="https://www.instagram.com/adyashakthi?igsh=cXFxdWF5NDBtODdy">Instagram</a>
+    </p>
+    <p class="contact-icons">
+      <img src="https://img.icons8.com/ios-glyphs/30/000000/github.png" alt="GitHub" />
+      <a href="https://github.com/thejokarthikeya">GitHub</a>
+    </p>
+  </section>
+
+  <footer>
+    <p>Made with 🩵 by Thejo Karthikeya.</p>
+    <p>© 2025 Thejo Karthikeya, all rights reserved.</p>
+  </footer>
+
+  <div class="popup-img-container" id="popup-container">
+    <img src="mine.jpg" alt="Popup Image" id="popup-img" />
+  </div>
+
+  <script>
+    const heroImage = document.getElementById('hero-image');
+    const popupContainer = document.getElementById('popup-container');
+    const popupImg = document.getElementById('popup-img');
+
+    heroImage.addEventListener('click', () => {
+      popupContainer.classList.add('show');
+    });
+
+    popupContainer.addEventListener('click', () => {
+      popupContainer.classList.remove('show');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === "Escape") {
+        popupContainer.classList.remove('show');
+      }
+    });
+  </script>
+
+</body>
+</html>
